@@ -1,0 +1,5 @@
+- [Pulso product context](project_pulso.md) — SaaS audit process pour PME, emails/meetings/calls, two sections (analysis + bilan)
+- [Build directly](feedback_build_directly.md) — User wants features built immediately, no confirmation needed
+- [Lisa profile](user_lisa.md) — Founder building Pulso, French-speaking, prefers direct execution
+- [Product philosophy](project_philosophy.md) — Pulso audits PROCESSES not PEOPLE, never micromanagement
+- [Backlog & Sprints](project_backlog.md) — Full backlog, sprint plan, anti-hallucination rules, AI Sparring Partner concept
