@@ -90,5 +90,32 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
+/* Light theme overrides */
+.landing-light {
+  --landing-bg: #FAFAFA;
+  --landing-bg-elevated: #FFFFFF;
+  --landing-bg-card: rgba(0, 0, 0, 0.02);
+  --landing-border: rgba(0, 0, 0, 0.08);
+  --landing-text: #171717;
+  --landing-text-muted: #737373;
+  --landing-glow: rgba(99, 102, 241, 0.06);
+}
+.landing-light .grid-bg {
+  background-image: radial-gradient(circle, rgba(0,0,0,0.04) 1px, transparent 1px);
+}
+.landing-light .glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+.landing-light .gradient-text {
+  background: linear-gradient(135deg, #4F46E5, #7C3AED, #9333EA);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+.animate-float { animation: float 6s ease-in-out infinite; }
+
 .react-flow__controls { box-shadow: var(--shadow-md) !important; border: 1px solid var(--border) !important; border-radius: var(--radius-md) !important; }
 .react-flow__controls-button { border: none !important; background: white !important; }

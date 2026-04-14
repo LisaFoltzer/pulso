@@ -15,25 +15,40 @@ import { PipelineSchema } from "@/components/landing/pipeline-schema";
 import { ProcessMapMockup } from "@/components/landing/process-map-mockup";
 import { SparringMockup } from "@/components/landing/sparring-mockup";
 import { MetricsVisual } from "@/components/landing/metrics-visual";
+import { AutomationMockup } from "@/components/landing/automation-mockup";
+import { RolesMockup } from "@/components/landing/roles-mockup";
+import { ThemeProvider, ThemeToggle, useTheme } from "@/components/landing/theme-toggle";
 
 const fade = { initial: { opacity: 0, y: 20 }, animate: { opacity: 1, y: 0 } };
 
 export default function LandingHome() {
   return (
-    <div style={{ backgroundColor: "#09090B", color: "#FAFAFA" }}>
+    <ThemeProvider>
+      <LandingContent />
+    </ThemeProvider>
+  );
+}
+
+function LandingContent() {
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
+
+  return (
+    <div className={isDark ? "landing-dark" : "landing-light"} style={{ backgroundColor: "var(--landing-bg)", color: "var(--landing-text)", transition: "background-color 0.3s, color 0.3s" }}>
       {/* Nav */}
-      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4" style={{ backgroundColor: "rgba(9,9,11,0.8)", backdropFilter: "blur(16px)", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4" style={{ backgroundColor: isDark ? "rgba(9,9,11,0.8)" : "rgba(250,250,250,0.85)", backdropFilter: "blur(16px)", borderBottom: "1px solid var(--landing-border)" }}>
         <div className="flex items-center gap-2">
           <div className="w-7 h-7 rounded-lg flex items-center justify-center" style={{ background: "linear-gradient(135deg, #6366F1, #8B5CF6)" }}>
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1L2 4v6l5 3 5-3V4L7 1z" stroke="white" strokeWidth="1.2" strokeLinejoin="round" fill="none" /><circle cx="7" cy="7" r="2" fill="white" opacity="0.85" /></svg>
           </div>
-          <span className="text-sm font-semibold">Pulso</span>
+          <span className="text-sm font-semibold" style={{ color: "var(--landing-text)" }}>Pulso</span>
         </div>
         <div className="flex items-center gap-6">
-          <Link href="/landing" className="text-[13px] text-white">Home</Link>
-          <Link href="/landing/features" className="text-[13px]" style={{ color: "#71717A" }}>Features</Link>
-          <Link href="/landing/pricing" className="text-[13px]" style={{ color: "#71717A" }}>Pricing</Link>
-          <Link href="/landing/about" className="text-[13px]" style={{ color: "#71717A" }}>About</Link>
+          <Link href="/landing" className="text-[13px]" style={{ color: "var(--landing-text)" }}>Home</Link>
+          <Link href="/landing/features" className="text-[13px]" style={{ color: "var(--landing-text-muted)" }}>Features</Link>
+          <Link href="/landing/pricing" className="text-[13px]" style={{ color: "var(--landing-text-muted)" }}>Pricing</Link>
+          <Link href="/landing/about" className="text-[13px]" style={{ color: "var(--landing-text-muted)" }}>About</Link>
+          <ThemeToggle />
           <Link href="/login" className="text-[13px] font-semibold px-4 py-2 rounded-lg" style={{ background: "linear-gradient(135deg, #6366F1, #8B5CF6)", color: "white" }}>Get started</Link>
         </div>
       </nav>
@@ -170,6 +185,24 @@ export default function LandingHome() {
               <p className="text-[14px] leading-relaxed" style={{ color: "#71717A" }}>Not a passive assistant. Proposes alternatives, calculates ROI, and pushes back with data-driven counter-arguments.</p>
             </ScrollReveal>
             <ScrollReveal direction="right"><SparringMockup /></ScrollReveal>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <ScrollReveal direction="left"><AutomationMockup /></ScrollReveal>
+            <ScrollReveal direction="right">
+              <span className="text-[10px] font-semibold uppercase tracking-widest" style={{ color: "#22C55E" }}>Automations</span>
+              <h3 className="text-2xl font-semibold mt-2 mb-3">From bottleneck to <span className="gradient-text">automated workflow</span></h3>
+              <p className="text-[14px] leading-relaxed" style={{ color: "var(--landing-text-muted)" }}>Pulso detects the problem and proposes a ready-to-deploy automation with configurable rules and estimated ROI.</p>
+            </ScrollReveal>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <ScrollReveal direction="left">
+              <span className="text-[10px] font-semibold uppercase tracking-widest" style={{ color: "#EF4444" }}>Roles & Capacity</span>
+              <h3 className="text-2xl font-semibold mt-2 mb-3">See where the <span className="gradient-text">workload concentrates</span></h3>
+              <p className="text-[14px] leading-relaxed" style={{ color: "var(--landing-text-muted)" }}>Capacity by role, time on low-value tasks, bottleneck detection, hiring recommendations. Process-level, never micromanagement.</p>
+            </ScrollReveal>
+            <ScrollReveal direction="right"><RolesMockup /></ScrollReveal>
           </div>
         </div>
       </section>
