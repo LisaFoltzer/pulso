@@ -196,6 +196,27 @@ export const allSources: SourceConfig[] = [
     eventTypes: ["deal", "ticket", "task"],
     setupGuide: "Bientôt disponible.",
   },
+
+  // ── Accounting ──
+  {
+    id: "pennylane", name: "Pennylane", icon: "PL", color: "#1D4ED8",
+    category: "crm" as const,
+    description: "Comptabilite, salaires, factures fournisseurs",
+    authType: "oauth" as const,
+    authUrl: "/api/auth/pennylane",
+    status: "available" as const,
+    eventTypes: ["invoice"],
+    setupGuide: "Connectez Pennylane pour lier les process a leurs couts reels.",
+  },
+  {
+    id: "quickbooks", name: "QuickBooks", icon: "QB", color: "#2CA01C",
+    category: "crm" as const,
+    description: "Comptabilite, employes, factures, P&L",
+    authType: "oauth" as const,
+    status: "coming_soon" as const,
+    eventTypes: ["invoice"],
+    setupGuide: "Bientot disponible.",
+  },
 ];
 
 // ── Normalization helpers ──
